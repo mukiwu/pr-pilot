@@ -54,6 +54,13 @@ if ! gh auth status &> /dev/null; then
     gh auth login
 fi
 
+# 如果尚未設置 OPENAI_API_KEY，嘗試從 pass 取得
+if [ -z "$OPENAI_API_KEY" ] && command -v pass &> /dev/null; then
+    if pass show openai/key &> /dev/null; then
+        OPENAI_API_KEY=$(pass show openai/key)
+    fi
+fi
+
 # 檢查是否設置了 OPENAI_API_KEY 環境變數
 if [ -z "$OPENAI_API_KEY" ]; then
     echo "警告: 未設置 OPENAI_API_KEY 環境變數，將無法使用 AI 生成標題建議"

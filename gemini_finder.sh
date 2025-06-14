@@ -10,10 +10,17 @@ if ! command -v gh &> /dev/null; then
     exit 1
 fi
 
+# Try to load GEMINI_API_KEY from pass if not already set
+if [ -z "$GEMINI_API_KEY" ] && command -v pass &> /dev/null; then
+    if pass show gemini/key &> /dev/null; then
+        GEMINI_API_KEY=$(pass show gemini/key)
+    fi
+fi
+
 # Check if GEMINI_API_KEY exists
 if [ -z "$GEMINI_API_KEY" ]; then
     echo "Error: GEMINI_API_KEY is not set"
-    echo "Please set GEMINI_API_KEY in your ~/.zshrc"
+    echo "Please set GEMINI_API_KEY in your ~/.zshrc or password manager"
     exit 1
 fi
 

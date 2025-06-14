@@ -42,6 +42,12 @@
    echo 'export GEMINI_API_KEY="你的 Gemini API Key"' >> ~/.zshrc
    ```
 
+   也可以使用 [pass](https://www.passwordstore.org/) 載入：
+   ```bash
+   export OPENAI_API_KEY=$(pass openai/key)
+   export GEMINI_API_KEY=$(pass gemini/key)
+   ```
+
 ## 使用方法
 
 ### 創建 PR

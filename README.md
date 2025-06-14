@@ -42,6 +42,12 @@ Simplify GitHub PR creation process using automation scripts and AI tools. Utili
    echo 'export GEMINI_API_KEY="your-gemini-api-key"' >> ~/.zshrc
    ```
 
+   You can also load keys from [pass](https://www.passwordstore.org/):
+   ```bash
+   export OPENAI_API_KEY=$(pass openai/key)
+   export GEMINI_API_KEY=$(pass gemini/key)
+   ```
+
 ## Usage
 
 ### Create PR
